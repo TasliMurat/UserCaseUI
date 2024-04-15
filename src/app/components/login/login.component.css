@@ -1,0 +1,16 @@
+.example-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* Ensure elements stack vertically */
+    align-items: center;
+  }
+  
+  .example-form div {
+    margin-bottom: 3px; /* Optional: Add some space between input fields and button */
+  }
+  
+  .example-form button {
+    width: 200px; /* Set the width of the button */
+    /* Add additional styling for the button if needed */
+  }
+  

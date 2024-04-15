@@ -1,0 +1,151 @@
+<div class="container">
+  <div align="right" class="mt-4"> 
+    <button mat-raised-button color="accent" routerLink="/userApartments" style="margin-right: 10px;">
+      İlanlarım
+    </button>
+    <button mat-raised-button color="accent" routerLink="/apartment-list">
+      Tüm İlanlar
+    </button>
+  </div>
+  <div class="card p-5 mt-3">
+    <form #apartmentForm="ngForm" (ngSubmit)="saveApartment(apartmentForm)">
+      <mat-form-field appearance="outline">
+        <mat-label>İlan Adı</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="İlanınıza isim veriniz"
+          name="adName"
+          [(ngModel)]="apartment.adName"
+          required
+        />
+
+        <mat-icon matSuffix>real_estate_agent</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Apartman Adı</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Apartman adını giriniz"
+          name="apartmentName"
+          [(ngModel)]="apartment.apartmentName"
+          required
+        />
+        <mat-icon matSuffix>apartment</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Şehir</mat-label>
+        <mat-select name="address" [(ngModel)]="apartment.address" required>
+          <mat-option value="İstanbul">İstanbul</mat-option>
+          <mat-option value="Ankara">Ankara</mat-option>
+          <mat-option value="İzmir">İzmir</mat-option>
+          <mat-option value="Bursa">Bursa</mat-option>
+          <mat-option value="Antalya">Antalya</mat-option>
+        </mat-select>
+        <mat-icon matSuffix>add_location</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Bina Yaşı</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Bina yaşını giriniz"
+          name="ageOfApartment"
+          [(ngModel)]="apartment.ageOfApartment"
+          required
+        />
+        <mat-icon matSuffix>history_toggle_off</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Metrekare</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Metrekare bilgisini giriniz"
+          name="area"
+          [(ngModel)]="apartment.area"
+          required
+        />
+        <mat-icon matSuffix>square_foot</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Yatak Odası</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Yatak odası sayısını giriniz"
+          name="numberOfBedrooms"
+          [(ngModel)]="apartment.numberOfBedrooms"
+          required
+        />
+        <mat-icon matSuffix>single_bed</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Banyo</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Banyo sayısını giriniz"
+          name="numberOfBathrooms"
+          [(ngModel)]="apartment.numberOfBathrooms"
+          required
+        />
+        <mat-icon matSuffix>hot_tub</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Kat Bilgisi</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Dairenin kaçıncı katta olduğunu giriniz"
+          name="floorLevel"
+          [(ngModel)]="apartment.floorLevel"
+          required
+        />
+        <mat-icon matSuffix>floor</mat-icon>
+      </mat-form-field>
+
+      <div>
+        <label>Balkon</label>
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button
+            [checked]="apartment.presenceOfBalcony == true"
+            (click)="balconyAvailability(true)"
+            value="true"
+            >Var</mat-radio-button
+          >
+          <mat-radio-button
+            [checked]="apartment.presenceOfBalcony == false"
+            (click)="balconyAvailability(false)"
+            value="false"
+            >Yok</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="text-center">
+        <button
+          type="button"
+          mat-raised-button
+          class="m-3"
+          (click)="clearForm(apartmentForm)"
+        >
+          Temizle
+        </button>
+        <button type="submit" mat-raised-button color="primary" class="m-3" [disabled]="!apartmentForm.valid">
+          Kaydet
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="container">
+  <div align="right" class="mt-4">
+    <button mat-raised-button color="accent" class="mb-3 mt-3" routerLink="/apartment" style="margin-right: 10px;">
+      Yeni İlan Oluştur
+    </button>
+    <button mat-raised-button color="accent" routerLink="/userApartments" >
+      İlanlarım
+    </button>
+    
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="adName">
+      <th mat-header-cell *matHeaderCellDef>İlan Adı</th>
+      <td mat-cell *matCellDef="let element">{{ element.adName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="apartmentName">
+      <th mat-header-cell *matHeaderCellDef>Apartman Adı</th>
+      <td mat-cell *matCellDef="let element">{{ element.apartmentName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Şehir</th>
+      <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="area">
+      <th mat-header-cell *matHeaderCellDef>Metre Kare</th>
+      <td mat-cell *matCellDef="let element">{{ element.area }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="ageOfApartment">
+      <th mat-header-cell *matHeaderCellDef>Bina Yaşı</th>
+      <td mat-cell *matCellDef="let element">{{ element.ageOfApartment }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="numberOfBedrooms">
+      <th mat-header-cell *matHeaderCellDef>Yatak Odası</th>
+      <td mat-cell *matCellDef="let element">{{ element.numberOfBedrooms }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="numberOfBathrooms">
+      <th mat-header-cell *matHeaderCellDef>Banyo</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.numberOfBathrooms }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="floorLevel">
+      <th mat-header-cell *matHeaderCellDef>Kat</th>
+      <td mat-cell *matCellDef="let element">{{ element.floorLevel }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="presenceOfBalcony">
+      <th mat-header-cell *matHeaderCellDef>Balkon</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.presenceOfBalcony ? "Var" : "Yok" }}
+      </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          aria-label="Example icon button with a heart icon"
+          (click)="updateApartment(element.id)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="warn"
+          aria-label="Example icon button with a heart icon"
+          (click)="deleteApartment(element.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

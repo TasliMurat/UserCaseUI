@@ -1,0 +1,12 @@
+/* Set background color to dark green */
+.logout-button {
+    background-color: darkgreen;
+    color: darkgreen; /* Set text color to white */
+  }
+  
+  /* Adjust padding and margin */
+  .logout-button {
+    padding: 8px 16px; /* Adjust as needed */
+    margin-top: 8px; /* Adjust as needed */
+  }
+  
